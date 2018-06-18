@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         if(v == mCheckForecast){
-            Intent intent = new Intent(MainActivity.this, Weather.class);
+            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             String mLocation = mLocationEditText.getText().toString();
             intent.putExtra("location", mLocation);
             startActivity(intent);
