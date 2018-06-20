@@ -4,7 +4,7 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class List {
+public class Forecast {
 
     @SerializedName("dt")
     @Expose
@@ -35,7 +35,7 @@ public class List {
      * No args constructor for use in serialization
      * 
      */
-    public List() {
+    public Forecast() {
     }
 
     /**
@@ -49,7 +49,7 @@ public class List {
      * @param rain
      * @param main
      */
-    public List(Integer dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dtTxt) {
+    public Forecast(Integer dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dtTxt) {
         super();
         this.dt = dt;
         this.main = main;

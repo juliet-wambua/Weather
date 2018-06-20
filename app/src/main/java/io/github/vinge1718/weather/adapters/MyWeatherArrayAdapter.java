@@ -1,4 +1,4 @@
-package io.github.vinge1718.weather;
+package io.github.vinge1718.weather.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
