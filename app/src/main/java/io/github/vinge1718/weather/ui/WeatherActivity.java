@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import io.github.vinge1718.weather.models.Weather;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +14,19 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.vinge1718.weather.adapters.MyWeatherArrayAdapter;
 import io.github.vinge1718.weather.R;
 import io.github.vinge1718.weather.models.Forecast;
+import io.github.vinge1718.weather.models.ForecastList;
 import io.github.vinge1718.weather.services.WeatherService;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
-    public List<Forecast> mWeatherForecasts = new ArrayList<>();
+    public List<ForecastList> mWeatherForecasts = new ArrayList<>();
     public static final String TAG = WeatherActivity.class.getSimpleName();
     @BindView(R.id.listView) ListView mListView;
     @BindView(R.id.locationTextView) TextView mLocationTextView;
-    private String[] towns = new String[] {"Nairobi", "Thika", "Kisumu", "Mombasa", "Eldoret", "Nanyuki", "Lamu", "Kiambu", "Nakuru", "Malindi"};
 
 
     @Override
@@ -56,7 +53,8 @@ public class WeatherActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                    mWeatherForecasts = weatherService.processResults(response);
+                    final Forecast forecast = weatherService.processResults(response);
+                    mWeatherForecasts = forecast.getForecastList();
                     WeatherActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -67,7 +65,7 @@ public class WeatherActivity extends AppCompatActivity {
                                 ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherConditions);
                                 mListView.setAdapter(adapter);
 
-                                for(Forecast weatherCondition : mWeatherForecasts){
+                                for(ForecastList weatherCondition : mWeatherForecasts){
                                     Log.d(TAG, "Description: " + weatherCondition.getWeather().get(0).getDescription());
                                     Log.d(TAG, "Temperatures: " + weatherCondition.getMain().getTemp());
                                     Log.d(TAG, "Maximum Temparatures: " + weatherCondition.getMain().getTempMax());
@@ -75,10 +73,10 @@ public class WeatherActivity extends AppCompatActivity {
                                     Log.d(TAG, "Wind Speeds: " +weatherCondition.getWind());
                                     Log.d(TAG, "Humidity Level: " + weatherCondition.getMain().getHumidity());
                                     Log.d(TAG, "Atmospherric Pressure: " + weatherCondition.getMain().getPressure());
-//                                    Log.d(TAG, "Area Population: " + weatherCondition.getPopulation());
+                                    Log.d(TAG, "Area Population: " + forecast.getCity().getPopulation());
                                     Log.d(TAG, "Time the weather will be in effect: " + weatherCondition.getDtTxt());
-//                                    Log.d(TAG, "Latitudinal coordinates: " + weatherCondition.getLatitude());
-//                                    Log.d(TAG, "Longitudinal coordinates: " + weatherCondition.getLongitude());
+                                    Log.d(TAG, "Latitudinal coordinates: " + forecast.getCity().getCoord().getLat());
+                                    Log.d(TAG, "Longitudinal coordinates: " + forecast.getCity().getCoord().getLon());
                                 }
                             }
                         }
