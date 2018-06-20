@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.data;
+package io.github.vinge1718.weather.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
+import io.github.vinge1718.weather.utilities.SunshineDateUtils;
 
-import com.example.android.sunshine.utilities.SunshineDateUtils;
 
 /**
  * Defines table and column names for the weather database. This class is not necessary, but keeps
