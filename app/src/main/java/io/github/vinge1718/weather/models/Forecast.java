@@ -6,30 +6,21 @@ import com.google.gson.annotations.SerializedName;
 
 public class Forecast {
 
-    @SerializedName("dt")
+    @SerializedName("cod")
     @Expose
-    private Integer dt;
-    @SerializedName("main")
+    private String cod;
+    @SerializedName("message")
     @Expose
-    private Main main;
-    @SerializedName("weather")
+    private Double message;
+    @SerializedName("cnt")
     @Expose
-    private java.util.List<Weather> weather = null;
-    @SerializedName("clouds")
+    private Long cnt;
+    @SerializedName("list")
     @Expose
-    private Clouds clouds;
-    @SerializedName("wind")
+    private java.util.List<ForecastList> forecastList = null;
+    @SerializedName("city")
     @Expose
-    private Wind wind;
-    @SerializedName("rain")
-    @Expose
-    private Rain rain;
-    @SerializedName("sys")
-    @Expose
-    private Sys sys;
-    @SerializedName("dt_txt")
-    @Expose
-    private String dtTxt;
+    private City city;
 
     /**
      * No args constructor for use in serialization
@@ -40,81 +31,59 @@ public class Forecast {
 
     /**
      * 
-     * @param clouds
-     * @param dt
-     * @param wind
-     * @param sys
-     * @param dtTxt
-     * @param weather
-     * @param rain
-     * @param main
+     * @param message
+     * @param cnt
+     * @param cod
+     * @param forecastList
+     * @param city
      */
-    public Forecast(Integer dt, Main main, java.util.List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dtTxt) {
+    public Forecast(String cod, Double message, Long cnt, java.util.List<ForecastList> forecastList, City city) {
         super();
-        this.dt = dt;
-        this.main = main;
-        this.weather = weather;
-        this.clouds = clouds;
-        this.wind = wind;
-        this.rain = rain;
-        this.sys = sys;
-        this.dtTxt = dtTxt;
+        this.cod = cod;
+        this.message = message;
+        this.cnt = cnt;
+        this.forecastList = forecastList;
+        this.city = city;
     }
 
-    public Integer getDt() {
-        return dt;
+    public String getCod() {
+        return cod;
     }
 
-    public void setDt(Integer dt) {
-        this.dt = dt;
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
-    public Main getMain() {
-        return main;
+    public Double getMessage() {
+        return message;
     }
 
-    public void setMain(Main main) {
-        this.main = main;
+    public void setMessage(Double message) {
+        this.message = message;
     }
 
-    public java.util.List<Weather> getWeather() {
-        return weather;
+    public Long getCnt() {
+        return cnt;
     }
 
-    public void setWeather(java.util.List<Weather> weather) {
-        this.weather = weather;
+    public void setCnt(Long cnt) {
+        this.cnt = cnt;
     }
 
-    public  Wind getWind() {
-        return wind;
+    public java.util.List<ForecastList> getForecastList() {
+        return forecastList;
     }
 
-    public void setWind(Wind wind) {
-        this.wind = wind;
+    public void setForecastList(java.util.List<ForecastList> forecastList) {
+        this.forecastList = forecastList;
     }
 
-    public Rain getRain() {
-        return rain;
+    public City getCity() {
+        return city;
     }
 
-    public void setRain(Rain rain) {
-        this.rain = rain;
-    }
-
-    public Sys getSys() {
-        return sys;
-    }
-
-    public void setSys(Sys sys) {
-        this.sys = sys;
-    }
-
-    public String getDtTxt() {
-        return dtTxt;
-    }
-
-    public void setDtTxt(String dtTxt) {
-        this.dtTxt = dtTxt;
+    public void setCity(City city) {
+        this.city = city;
     }
 
 }
