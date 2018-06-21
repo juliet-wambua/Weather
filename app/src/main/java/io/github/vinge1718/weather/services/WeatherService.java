@@ -34,6 +34,7 @@ public class WeatherService {
         urlBuilder
                 .addPathSegment("forecast")
                 .addQueryParameter(Constants.LOCATION_QUERY_PARAMETER, location)
+                .addQueryParameter(Constants.UNITS, Constants.FORMAT)
                 .addQueryParameter(Constants.API_KEY_PARAM, Constants.API_KEY);
 
         String url = urlBuilder.build().toString();
