@@ -70,7 +70,7 @@ public class WeatherActivity extends AppCompatActivity {
                                     Log.d(TAG, "Temperatures: " + weatherCondition.getMain().getTemp());
                                     Log.d(TAG, "Maximum Temparatures: " + weatherCondition.getMain().getTempMax());
                                     Log.d(TAG, "Minimum Temparatures: " + weatherCondition.getMain().getTempMin());
-                                    Log.d(TAG, "Wind Speeds: " +weatherCondition.getWind());
+                                    Log.d(TAG, "Wind Speeds: " +weatherCondition.getWind().getSpeed());
                                     Log.d(TAG, "Humidity Level: " + weatherCondition.getMain().getHumidity());
                                     Log.d(TAG, "Atmospherric Pressure: " + weatherCondition.getMain().getPressure());
                                     Log.d(TAG, "Area Population: " + forecast.getCity().getPopulation());
