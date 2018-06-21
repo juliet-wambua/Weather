@@ -8,5 +8,7 @@ public class Constants {
     public static final String UNITS = "units";
     public static final String FORMAT = "metric";
     public static final String API_KEY_PARAM = "appid";
+    public static final String WEATHER_ICON_BASEURL = "http://openweathermap.org/img/w/";
+    public static final String ICON_EXTENSION = ".png";
 
 }
