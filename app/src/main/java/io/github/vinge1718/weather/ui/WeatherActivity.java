@@ -26,8 +26,7 @@ import okhttp3.Response;
 public class WeatherActivity extends AppCompatActivity {
     public List<ForecastList> mWeatherForecasts = new ArrayList<>();
     public static final String TAG = WeatherActivity.class.getSimpleName();
-    @BindView(R.id.listView) ListView mListView;
-    @BindView(R.id.locationTextView) TextView mLocationTextView;
+
 
 
     @Override
@@ -38,7 +37,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Go Back to check the results for other towns");
+
 
 
         getWeather(location);
@@ -63,8 +62,6 @@ public class WeatherActivity extends AppCompatActivity {
                             for(int i = 0; i < weatherConditions.length;i++){
                                 weatherConditions[i] = mWeatherForecasts.get(i).getWeather().get(0).getMain();
 
-                                ArrayAdapter adapter = new ArrayAdapter(WeatherActivity.this, android.R.layout.simple_list_item_1, weatherConditions);
-                                mListView.setAdapter(adapter);
 
                                 for(ForecastList weatherCondition : mWeatherForecasts){
                                     Log.d(TAG, "The weather Icon key is: " + Constants.WEATHER_ICON_BASEURL + weatherCondition.getWeather().get(0).getIcon() +Constants.ICON_EXTENSION);
@@ -76,9 +73,10 @@ public class WeatherActivity extends AppCompatActivity {
                                     Log.d(TAG, "Humidity Level: " + weatherCondition.getMain().getHumidity());
                                     Log.d(TAG, "Atmospherric Pressure: " + weatherCondition.getMain().getPressure());
                                     Log.d(TAG, "Area Population: " + forecast.getCity().getPopulation());
-                                    Log.d(TAG, "Time the weather will be in effect: " + weatherCondition.getDtTxt());
+                                    //Log.d(TAG, "Time the weather will be in effect: " + weatherCondition.getDtTxt());
                                     Log.d(TAG, "Latitudinal coordinates: " + forecast.getCity().getCoord().getLat());
                                     Log.d(TAG, "Longitudinal coordinates: " + forecast.getCity().getCoord().getLon());
+                                    Log.d(TAG, "Formated forecasted time: " + weatherCondition.getDt());
                                 }
                             }
                         }
