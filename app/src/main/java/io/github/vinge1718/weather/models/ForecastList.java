@@ -4,6 +4,8 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class ForecastList {
 
     @SerializedName("dt")
@@ -61,8 +63,10 @@ public class ForecastList {
         this.dtTxt = dtTxt;
     }
 
-    public Long getDt() {
-        return dt;
+    public Date getDt() {
+        Long timestamp = dt;
+        Date date = new Date(timestamp*1000);
+        return date;
     }
 
     public void setDt(Long dt) {
