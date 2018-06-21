@@ -66,6 +66,7 @@ public class WeatherActivity extends AppCompatActivity {
                                 mListView.setAdapter(adapter);
 
                                 for(ForecastList weatherCondition : mWeatherForecasts){
+                                    Log.d(TAG, "The weather Icon key is: " +weatherCondition.getWeather().get(0).getIcon());
                                     Log.d(TAG, "Description: " + weatherCondition.getWeather().get(0).getDescription());
                                     Log.d(TAG, "Temperatures: " + weatherCondition.getMain().getTemp());
                                     Log.d(TAG, "Maximum Temparatures: " + weatherCondition.getMain().getTempMax());
