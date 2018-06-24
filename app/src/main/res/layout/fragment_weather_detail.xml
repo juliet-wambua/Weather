@@ -1,14 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.WeatherDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@drawable/blue"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/fragmentTemperatureTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/deg"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="74sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconImageView"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:layout_marginBottom="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sun" />
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="27dp"
+                android:text="@string/description"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="#33000000"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/cityHolderLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/populationHolderLinearLayout"
+                app:layout_constraintEnd_toStartOf="@+id/populationHolderLinearLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/populationHolderLinearLayout">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/city"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/cityNameTextView"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/city"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/populationHolderLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/maxTempHolderLinearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cityHolderLinearLayout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/population"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/populationTextView"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/population"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/minTempHolderLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@+id/maxTempHolderLinearLayout"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/maxTempHolderLinearLayout">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/mintemp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/minimumTemparatureTextView"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/mintemp"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/maxTempHolderLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginRight="11dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/windSpeedHolder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/minTempHolderLinearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/populationHolderLinearLayout">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/maxtemp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/maximumTemparatureTextView"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/maxtemp"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/windSpeedHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="23dp"
+                android:layout_marginLeft="46dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginStart="46dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/coordinatesHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/maxTempHolderLinearLayout">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/windspeed"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/windSpeedTextView"
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/windspeed"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/coordinatesHolder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/windSpeedHolder">
+
+                <TextView
+                    android:layout_width="47dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/map"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/coordinatesTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/coord"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#A5FF33"
+            android:text="Save Weather" />
+
+    </LinearLayout>
 </FrameLayout>
