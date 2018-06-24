@@ -1,25 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="200dp"
+    android:background="@drawable/imagesbg1">
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:id="@+id/weatherImageView"
+        android:layout_width="115dp"
+        android:layout_height="124dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:contentDescription="@string/icon"
         android:padding="10dp"
-        android:id="@+id/weatherIconView"
+        android:scaleType="centerCrop"
         android:src="@drawable/sun"
-        android:scaleType="centerCrop"/>
-    <LinearLayout
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/mainWeatherTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/mainWeatherTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        android:text="@string/mainCondition"
+        android:textColor="@android:color/background_light"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/temperatureTextView"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureTextView"
+        app:layout_constraintStart_toEndOf="@+id/weatherImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temperatureTextView"
+        android:layout_width="141dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:padding="20dp"
+        android:text="@string/temp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@+id/timeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mainWeatherTextView"
+        app:layout_constraintTop_toBottomOf="@+id/mainWeatherTextView" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="2dp"
+        android:padding="5dp"
+        android:text="@string/time"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/weatherImageView"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
+
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:background="#ffffff"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherImageView" />
+
 
 </android.support.constraint.ConstraintLayout>
