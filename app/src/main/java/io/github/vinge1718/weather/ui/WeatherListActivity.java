@@ -5,10 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.vinge1718.weather.Constants;
 import io.github.vinge1718.weather.R;
 import io.github.vinge1718.weather.adapters.WeatherListAdapter;
 import io.github.vinge1718.weather.models.Forecast;
@@ -26,9 +22,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class WeatherActivity extends AppCompatActivity {
+public class WeatherListActivity extends AppCompatActivity {
     public List<ForecastList> mWeatherForecasts = new ArrayList<>();
-    public static final String TAG = WeatherActivity.class.getSimpleName();
+    public static final String TAG = WeatherListActivity.class.getSimpleName();
     @BindView(R.id.recyclerView) RecyclerView mRecycleView;
     private WeatherListAdapter mAdapter;
 
@@ -55,14 +51,13 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                     final Forecast forecast = weatherService.processResults(response);
-                    //////////////////////////////////////////////////////////////////
                     mWeatherForecasts = forecast.getForecastList();
-                    WeatherActivity.this.runOnUiThread(new Runnable() {
+                    WeatherListActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mAdapter = new WeatherListAdapter(getApplicationContext(), mWeatherForecasts);
+                            mAdapter = new WeatherListAdapter(getApplicationContext(), mWeatherForecasts, forecast);
                             mRecycleView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherActivity.this);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(WeatherListActivity.this);
                             mRecycleView.setLayoutManager(layoutManager);
                             mRecycleView.setHasFixedSize(true);
                         }
