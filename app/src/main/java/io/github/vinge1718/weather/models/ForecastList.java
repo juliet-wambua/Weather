@@ -4,34 +4,37 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
+@Parcel
 public class ForecastList {
 
     @SerializedName("dt")
     @Expose
-    private Long dt;
+    Long dt;
     @SerializedName("main")
     @Expose
-    private Main main;
+    Main main;
     @SerializedName("weather")
     @Expose
-    private java.util.List<Weather> weather = null;
+    java.util.List<Weather> weather = null;
     @SerializedName("clouds")
     @Expose
-    private Clouds clouds;
+    Clouds clouds;
     @SerializedName("wind")
     @Expose
-    private Wind wind;
+    Wind wind;
     @SerializedName("rain")
     @Expose
-    private Rain rain;
+    Rain rain;
     @SerializedName("sys")
     @Expose
-    private Sys sys;
+    Sys sys;
     @SerializedName("dt_txt")
     @Expose
-    private String dtTxt;
+    String dtTxt;
 
     /**
      * No args constructor for use in serialization
@@ -63,10 +66,14 @@ public class ForecastList {
         this.dtTxt = dtTxt;
     }
 
-    public Date getDt() {
+    public String getReadableDate() {
         Long timestamp = dt;
         Date date = new Date(timestamp*1000);
-        return date;
+        return date.toString();
+    }
+
+    public Long getDt() {
+        return dt;
     }
 
     public void setDt(Long dt) {

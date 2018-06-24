@@ -4,14 +4,17 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Wind {
 
     @SerializedName("speed")
     @Expose
-    private Double speed;
+    Double speed;
     @SerializedName("deg")
     @Expose
-    private Double deg;
+    Double deg;
 
     /**
      * No args constructor for use in serialization

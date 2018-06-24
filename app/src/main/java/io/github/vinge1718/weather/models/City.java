@@ -4,23 +4,26 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class City {
 
     @SerializedName("id")
     @Expose
-    private Long id;
+    Long id;
     @SerializedName("name")
     @Expose
-    private String name;
+    String name;
     @SerializedName("coord")
     @Expose
-    private Coord coord;
+    Coord coord;
     @SerializedName("country")
     @Expose
-    private String country;
+    String country;
     @SerializedName("population")
     @Expose
-    private Long population;
+    Long population;
 
     /**
      * No args constructor for use in serialization
@@ -78,12 +81,15 @@ public class City {
         this.country = country;
     }
 
-    public Long getPopulation() {
-        return population;
+    public String getPopulation() {
+        String people ="An estimated " +population.toString() + " people live in this area.";
+
+        return people;
     }
 
     public void setPopulation(Long population) {
         this.population = population;
     }
+
 
 }

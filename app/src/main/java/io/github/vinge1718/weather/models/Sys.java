@@ -4,11 +4,14 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Sys {
 
     @SerializedName("pod")
     @Expose
-    private String pod;
+    String pod;
 
     /**
      * No args constructor for use in serialization

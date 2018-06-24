@@ -4,23 +4,26 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Forecast {
 
     @SerializedName("cod")
     @Expose
-    private String cod;
+    String cod;
     @SerializedName("message")
     @Expose
-    private Double message;
+    Double message;
     @SerializedName("cnt")
     @Expose
-    private Long cnt;
+    Long cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<ForecastList> forecastList = null;
+    java.util.List<ForecastList> forecastList = null;
     @SerializedName("city")
     @Expose
-    private City city;
+    City city;
 
     /**
      * No args constructor for use in serialization

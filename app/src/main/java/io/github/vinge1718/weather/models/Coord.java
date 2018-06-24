@@ -4,14 +4,18 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
+
 public class Coord {
 
     @SerializedName("lat")
     @Expose
-    private Double lat;
+    Double lat;
     @SerializedName("lon")
     @Expose
-    private Double lon;
+    Double lon;
 
     /**
      * No args constructor for use in serialization
@@ -45,6 +49,13 @@ public class Coord {
 
     public void setLon(Double lon) {
         this.lon = lon;
+    }
+
+    public String getCoordinates(){
+        String lon = getLon().toString();
+        String lat = getLat().toString();
+        String coordinates = "Pin location"+"\n"+"("+lat+","+lon+")";
+        return coordinates;
     }
 
 }

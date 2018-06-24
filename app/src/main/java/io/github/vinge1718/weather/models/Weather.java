@@ -4,20 +4,24 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+import io.github.vinge1718.weather.Constants;
+@Parcel
 public class Weather {
 
     @SerializedName("id")
     @Expose
-    private Long id;
+    Long id;
     @SerializedName("main")
     @Expose
-    private String main;
+    String main;
     @SerializedName("description")
     @Expose
-    private String description;
+    String description;
     @SerializedName("icon")
     @Expose
-    private String icon;
+    String icon;
 
     /**
      * No args constructor for use in serialization
@@ -66,7 +70,9 @@ public class Weather {
     }
 
     public String getIcon() {
-        return icon;
+        String iconId = icon;
+        String iconUrl = Constants.WEATHER_ICON_BASEURL + iconId + Constants.ICON_EXTENSION;
+        return iconUrl;
     }
 
     public void setIcon(String icon) {

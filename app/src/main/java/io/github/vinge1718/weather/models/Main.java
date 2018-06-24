@@ -4,32 +4,35 @@ package io.github.vinge1718.weather.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Main {
 
     @SerializedName("temp")
     @Expose
-    private Double temp;
+    Double temp;
     @SerializedName("temp_min")
     @Expose
-    private Double tempMin;
+    Double tempMin;
     @SerializedName("temp_max")
     @Expose
-    private Double tempMax;
+    Double tempMax;
     @SerializedName("pressure")
     @Expose
-    private Double pressure;
+    Double pressure;
     @SerializedName("sea_level")
     @Expose
-    private Double seaLevel;
+    Double seaLevel;
     @SerializedName("grnd_level")
     @Expose
-    private Double grndLevel;
+    Double grndLevel;
     @SerializedName("humidity")
     @Expose
-    private Long humidity;
+    Long humidity;
     @SerializedName("temp_kf")
     @Expose
-    private transient Long tempKf;
+    transient Long tempKf;
 
     /**
      * No args constructor for use in serialization
@@ -61,8 +64,10 @@ public class Main {
         this.tempKf = tempKf;
     }
 
-    public Double getTemp() {
-        return temp;
+    public String getTemp() {
+        String tempDouble = temp.toString();
+        String tempString = tempDouble + " °C";
+        return tempString;
     }
 
     public void setTemp(Double temp) {
