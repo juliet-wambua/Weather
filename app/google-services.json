@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "12982426179",
+    "firebase_url": "https://weather-bda71.firebaseio.com",
+    "project_id": "weather-bda71",
+    "storage_bucket": "weather-bda71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12982426179:android:3fa9231dc5efd654",
+        "android_client_info": {
+          "package_name": "io.github.vinge1718.weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12982426179-smh06kfqhjod279frs8fiuppra4v9gn2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.vinge1718.weather",
+            "certificate_hash": "b826abaab6025f785f9982c76e33753be9d7b2c6"
+          }
+        },
+        {
+          "client_id": "12982426179-cb1vs15g8agir31khh7j05939pq64flk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8qWwmi-WmPUYlyB-0pDlX_JK6v4fksVk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12982426179-cb1vs15g8agir31khh7j05939pq64flk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
