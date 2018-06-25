@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Parcel
@@ -68,8 +69,9 @@ public class ForecastList {
 
     public String getReadableDate() {
         Long timestamp = dt;
-        Date date = new Date(timestamp*1000);
-        return date.toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
+        String date = sdf.format(timestamp);
+        return date;
     }
 
     public Long getDt() {
