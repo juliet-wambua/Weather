@@ -68,7 +68,7 @@ public class ForecastList {
     }
 
     public String getReadableDate() {
-        Long timestamp = dt;
+        Long timestamp = dt*1000;
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
         String date = sdf.format(timestamp);
         return date;
