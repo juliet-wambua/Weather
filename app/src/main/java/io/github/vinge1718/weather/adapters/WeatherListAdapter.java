@@ -73,14 +73,15 @@ public class WeatherListAdapter extends RecyclerView.Adapter<WeatherListAdapter.
         public void bindWeatherForecast(ForecastList forecastList){
             Picasso.with(mContext).load(forecastList.getWeather().get(0).getIcon()).into(mWeatherImageView);
             mMainWeatherTextView.setText(forecastList.getWeather().get(0).getMain());
-            mMaintemparatureTextView.setText(forecastList.getMain().getTemp().toString());
-            mTimeTextView.setText(forecastList.getDt().toString());
+            mMaintemparatureTextView.setText("Average Temperatures of: "+forecastList.getMain().getTemp());
+            mTimeTextView.setText(forecastList.getReadableDate());
         }
 
         @Override
         public void onClick(View v){
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, WeatherDetailActivity.class);
+            intent.putExtra("forecast", Parcels.wrap(mForecast));
             intent.putExtra("position", itemPosition);
             intent.putExtra("forecastLists", Parcels.wrap(mWeatherForecasts));
             intent.putExtra("city", Parcels.wrap(mForecast.getCity()));
