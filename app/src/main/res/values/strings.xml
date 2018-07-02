@@ -38,6 +38,7 @@
     <string name="humidity">Air humidity AAAAND air Pressure</string>
     <string name="city">city</string>
     <string name="coord">Click to look up this location</string>
+    <string name="sign_out">Sign Out</string>
 
     <!-- - - - - - - - - - - - - - - -
       - Used by SunshinePreferences  -
