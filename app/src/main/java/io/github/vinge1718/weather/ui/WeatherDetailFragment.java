@@ -10,15 +10,20 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.vinge1718.weather.Constants;
 import io.github.vinge1718.weather.R;
 import io.github.vinge1718.weather.models.City;
 import io.github.vinge1718.weather.models.Forecast;
@@ -38,16 +43,18 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
     @BindView(R.id.maximumTemparatureTextView) TextView mMaximumTemperatureTextView;
     @BindView(R.id.windSpeedTextView) TextView mWindSpeedTextView;
     @BindView(R.id.coordinatesTextView) TextView mLocationCoordinates;
+    @BindView(R.id.button) Button mSaveButton;
 
     private Forecast forecast;
     private ForecastList weatherForecast;
     private City city;
 
 
-    public static WeatherDetailFragment newInstance(ForecastList forecastList, City mCity){
+    public static WeatherDetailFragment newInstance(ForecastList mForecastList, City mCity, Forecast mForecast){
         WeatherDetailFragment weatherDetailFragment = new WeatherDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("forecastList", Parcels.wrap(forecastList));
+        args.putParcelable("forecast", Parcels.wrap(mForecast));
+        args.putParcelable("forecastList", Parcels.wrap(mForecastList));
         args.putParcelable("city", Parcels.wrap(mCity));
         weatherDetailFragment.setArguments(args);
         return weatherDetailFragment;
@@ -58,6 +65,7 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
         super.onCreate(savedInstanceState);
         weatherForecast = Parcels.unwrap(getArguments().getParcelable("forecastList"));
         city = Parcels.unwrap(getArguments().getParcelable("city"));
+        forecast= Parcels.unwrap(getArguments().getParcelable("forecast"));
     }
 
 
@@ -83,7 +91,7 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
             mMaximumTemperatureTextView.setText(Double.toString(weatherForecast.getMain().getTempMax()));
             mWindSpeedTextView.setText(Double.toString(weatherForecast.getWind().getSpeed()));
             mLocationCoordinates.setOnClickListener(this);
-
+            mSaveButton.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return view;
@@ -91,9 +99,18 @@ public class WeatherDetailFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v){
-        if(v == mLocationCoordinates){
-            Intent webMapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + city.getCoord().getLat() + "," + city.getCoord().getLon() + "?q=(" + city.getName() + ")"));
-            startActivity(webMapIntent);
+        switch (v.getId()) {
+
+            case R.id.coordinatesTextView :
+                Intent webMapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + city.getCoord().getLat() + "," + city.getCoord().getLon() + "?q=(" + city.getName() + ")"));
+                startActivity(webMapIntent);
+                break;
+
+            case R.id.button:
+                DatabaseReference weatherForecastFbase = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_FORECAST);
+                weatherForecastFbase.push().setValue(forecast);
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
